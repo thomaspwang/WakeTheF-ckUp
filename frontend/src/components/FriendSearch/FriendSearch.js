@@ -32,7 +32,7 @@ function FriendSearch() {
         'Origin' : 'http://localhost:3000'
       },
       body: JSON.stringify({ 
-        "username" : "a",
+        "username" : user,
         "friend" : inputText
       })
     });
@@ -49,14 +49,14 @@ function FriendSearch() {
         'Origin' : 'http://localhost:3000'
       }
     }).then(response =>
-      response.json().then(data => setFriends(data)))
+      response.json().then(data => console.log(data['friends'])))
   }
 
   useEffect(() => {
     getFriends();
     console.log(user)
+    console.log(typeof friends)
     console.log(friends)
-    console.log(typeof friends.entries)
   }, [])
 
   return (
