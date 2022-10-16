@@ -110,7 +110,7 @@ export default function FriendsDropdown() {
         </FormControl>
       </div>
       <div id="second-box">
-        <Button id="oncall-button" onClick={handleSubmit}>add</Button>
+        <Button id="add-button" onClick={handleSubmit}>add</Button>
         <p class="title" id="curr-oncall">current oncall friends</p>
         <List>
           <>

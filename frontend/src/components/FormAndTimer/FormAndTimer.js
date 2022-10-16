@@ -35,7 +35,7 @@ const FormAndTimer = (props) => {
           </div>
           
           <div id="picture-box">
-            <img id="sleebee" src={require("../../assets/sleebee.png")}></img>
+            <img id="sleebee" src={require("../../assets/sleepingbee.png")}></img>
           </div>
           
           <CountdownTimer targetDate={targetDate} />

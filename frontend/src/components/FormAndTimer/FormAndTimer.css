@@ -32,6 +32,9 @@ label {
 
 #countdown-date-time {
     border-radius: 6vh;
+    font-family: "DM Sans";
+    width: 8vw;
+    border-style: none;
 }
 
 #sleebee {
@@ -41,7 +44,7 @@ label {
 
 #description-box {
     width: 43vw;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
 }
 
 #description {
