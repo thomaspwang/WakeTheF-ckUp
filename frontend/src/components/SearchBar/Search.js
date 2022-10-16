@@ -6,7 +6,7 @@ import "./Search.css";
 function Search() {
     return (
         <div className="main">
-          <h1>React Search</h1>
+          <h1>Find Friends</h1>
           <div className="search">
             <TextField
               id="outlined-basic"
