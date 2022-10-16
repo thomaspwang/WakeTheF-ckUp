@@ -1,10 +1,14 @@
 import React from "react";
-import "./Timer.css"
+import "./Alarm.css"
+import FormAndTimer from "../../components/FormAndTimer/FormAndTimer";
 
-function Timer() {
+function Alarm() {
+
     return (
-        <div></div>
-    )
+      <div>
+        <FormAndTimer />
+      </div>
+    );
 }
 
-export default Timer;
+export default Alarm;
