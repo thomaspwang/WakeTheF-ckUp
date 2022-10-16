@@ -116,7 +116,7 @@ export default function FriendsDropdown() {
           <>
             {
               onCall.map(friend =>
-                <ListItemText primary="friend"/>)
+                <ListItemText primary={friend}/>)
             }
           </>
         </List>

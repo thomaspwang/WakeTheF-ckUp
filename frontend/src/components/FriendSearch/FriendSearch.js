@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import  React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Button, Paper } from "@material-ui/core";
 import { currUserAtom } from "../../atoms";
@@ -33,7 +33,7 @@ function FriendSearch() {
     
   };
 
-    return (
+  return (
         <div className="main">
           <h1>Find Friends</h1>
           <div className="search">
