@@ -17,6 +17,34 @@ function FriendSearch() {
   const [response, setResponse] = useState(null);
   const [friends, setFriends] = useState([]);
 
+  const getFriends = async () => {
+    const endpoint = `http://localhost:4000/users/getFriends/?username=${user}`
+    const res = await fetch(endpoint, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Origin' : 'http://localhost:3000'
+      }
+    })
+    const data = await res.json();
+    console.log(data)
+    setFriends(data['friends'])
+    // ).then(response =>
+    //   response.json().then(data => data['friends'])
+    //   .then(data => {
+    //     setFriends(data)
+    //   }))
+  }
+
+  useEffect(() => {
+    getFriends();
+    // console.log(user)
+    // console.log(typeof friends)
+    console.log(friends)
+  }, [])
+
   let inputHandler = (e) => {
     setInputText(e.target.value);
   };
@@ -38,27 +66,6 @@ function FriendSearch() {
     });
   };
 
-  const getFriends = async () => {
-    const endpoint = `http://localhost:4000/users/getFriends/?username=${user}`
-    fetch(endpoint, {
-      mode: 'cors',
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Origin' : 'http://localhost:3000'
-      }
-    }).then(response =>
-      response.json().then(data => console.log(data['friends'])))
-  }
-
-  useEffect(() => {
-    getFriends();
-    console.log(user)
-    console.log(typeof friends)
-    console.log(friends)
-  }, [])
-
   return (
         <div className="main">
           <h1>Find Friends</h1>
@@ -74,14 +81,14 @@ function FriendSearch() {
             <Button onClick={handleSubmit}>Add Friend</Button>
           </div>
           <p class="title"> current friends</p>
-          {/* <List>
+          <List>
             <>
               {
                 friends.map(friend =>
                   <ListItemText primary={friend}/>)
               }
             </>
-          </List> */}
+          </List>
         </div>
     );
 }
