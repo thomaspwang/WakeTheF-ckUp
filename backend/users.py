@@ -16,7 +16,7 @@ except:
 # username and password fields. If there is already 
 # a user with the same username it returns { "success" : False}
 #
-# post body: {"username" : USERNAME, "password", PASSWORD, "address" : ADDRESS, "phone" : PHONE}
+# post body: {"name": NAME, "username" : USERNAME, "password", PASSWORD, "address" : ADDRESS, "phone" : PHONE}
 # returns: {"success" : BOOLEAN}
 @users_bp.route('/newUser/', methods=['POST'])
 def addUser():
@@ -26,7 +26,7 @@ def addUser():
     lat, long = geocode(data['address'])
     
     session = Session()
-    newUser = User(username=data['username'], password=data['password'], \
+    newUser = User(name=data['name'], username=data['username'], password=data['password'], \
                    friends=[], oncall=[], lat=lat, long=long, phone=data["phone"])
     session.add(newUser)
     try:
@@ -38,6 +38,17 @@ def addUser():
 
     session.close()
     return jsonify(ret)
+
+@users_bp.route('/allFriends/', methods=['GET'])
+def getAllFriends():
+    session = Session()
+    users = session.query(User.name, User.username).all()
+    session.close()
+    ret = []
+    for a, b in users:
+        ret.append((a,b))
+    return jsonify(ret)
+
 
 @users_bp.route('/login/', methods=['POST'])
 def loginUser():
