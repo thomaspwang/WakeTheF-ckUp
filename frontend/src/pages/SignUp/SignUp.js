@@ -69,37 +69,75 @@ function SignUp() {
             </div>
 
             <div class="text-subtitle">
-              never sleep through an alarm again.
+              to never sleep through an alarm again.
             </div>
 
             <div>
-              <div class="form-title">username</div>
+              <div class="form-title">username *</div>
 
               <TextField
                 style={{ width: "100%" }}
                 variant="outlined"
-                onChange={handleUsernameChange}
+                size="small"
+                // onChange={handleUsernameChange}
               />
             </div>
 
             <div style={{ marginTop: 10 }}>
-              <div class="form-title">password</div>
+              <div class="form-title">password *</div>
 
               <TextField
                 style={{ width: "100%" }}
                 variant="outlined"
-                onChange={handlePasswordChange}
+                size="small"
+                // onChange={handlePasswordChange}
               />
             </div>
 
             <div style={{ marginTop: 10 }}>
-              <div class="form-title">phone number</div>
+              <div class="form-title">phone number *</div>
 
               <TextField
                 style={{ width: "100%" }}
                 variant="outlined"
-                onChange={handlePasswordChange}
+                size="small"
+                // onChange={handlePasswordChange}
               />
+            </div>
+
+            <div style={{ marginTop: 10 }}>
+              <div class="form-title">address</div>
+
+              <div class="tiny-font" style={{ marginTop: -3 }}>street name *</div>
+
+              <TextField
+                style={{ width: "100%" }}
+                variant="outlined"
+                size="small"
+                // onChange={handlePasswordChange}
+              />
+
+              <div>
+                <div class="tiny-font">city *</div>
+
+                <TextField
+                  style={{ width: "100%" }}
+                  variant="outlined"
+                  size="small"
+                  // onChange={handlePasswordChange}
+                />
+                <div class="tiny-font">state *</div>
+
+                <TextField
+                  style={{ width: "100%" }}
+                  variant="outlined"
+                  size="small"
+                  // onChange={handlePasswordChange}
+                />
+              </div>
+
+              
+
             </div>
 
             <br />
