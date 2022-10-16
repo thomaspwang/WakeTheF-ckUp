@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import React, {useState} from "react";
 import "./Login.css"
 import { useNavigate } from "react-router-dom";
+import { useAtom } from "jotai";
+import { currUserAtom } from "../../atoms";
 
 const useFormInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -23,15 +25,45 @@ function Login() {
   // const password = useFormInput('');
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useAtom(currUserAtom)
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+
+    const response = await fetch("http://localhost:4000/users/login/", {
+    mode: 'cors',
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Origin' : 'http://localhost:3000'
+    },
+    body: JSON.stringify({ 
+      "username" : username,
+      "password" : password,
+    })
+    })
+
+    response.text()
+    .then(data => {
+        console.log(data)
+        if (data == "true") {
+            setUser(username)
+            navigate("/alarm")
+        } else {
+            setError("the username or password you submitted is not correct!")
+        }
+    })
+    }
 
   const handlePasswordChange = e => {
-    setPassword(e.target.password);
+    setPassword(e.target.value);
   }
 
   const handleUsernameChange = e => {
-    setUsername(e.target.username);
+    setUsername(e.target.value);
   }
 
   return (
@@ -79,6 +111,7 @@ function Login() {
                 backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none"
             }}
             variant="contained"
+            onClick={handleLogin}
             // disabled={username === "", password === ""}
           >
             login
@@ -87,7 +120,9 @@ function Login() {
           {/* <input class='btnLogin' type="button" value={loading ? 'Loading...' : 'Login'} disabled={loading} /> */}
 
           <div class="form-extra">
-            don't have an account? sign up here.
+            <a href="http://localhost:3000/signup">
+                don't have an account? sign up here.
+            </a>
           </div>
         </div>
       </div>
