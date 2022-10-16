@@ -48,10 +48,10 @@ function SignUp() {
           'Origin' : 'http://localhost:3000'
         },
         body: JSON.stringify({ 
-          "username" : username.value,
-          "password" : password.value,
-          "address" : street.value + state.value + city.value,
-          "phone" : phone.value
+          "username" : username,
+          "password" : password,
+          "address" : street + state + city,
+          "phone" : phone
         })
       });
 
@@ -60,12 +60,9 @@ function SignUp() {
       if (response.status === 400) {
         setError("Account already exists! Try logging in.");
       } else {
-        setUser(username.value);
+        setUser(username);
         navigate("/alarm")
       }
-  
-      const responseJson = await response.json();
-      console.log(responseJson);
     }
 
     const handlePasswordChange = e => {
@@ -174,6 +171,7 @@ function SignUp() {
             <br />
 
             <Button 
+              onClick={handleSignUp}
               style={{
                 backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none"
             }}

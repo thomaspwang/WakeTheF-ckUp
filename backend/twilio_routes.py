@@ -5,38 +5,39 @@ from model import User
 from twilio.rest import Client
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.twiml.voice_response import VoiceResponse, Say
-import json, os, time, multiprocessing
+import json, os, time
+from multiprocessing import Process, Manager
 
 twilio_bp = Blueprint('twilio', __name__)
 try:
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
 except:
     account_sid = 0
     auth_token = 0
 
 
-client = Client(account_sid, auth_token)
-
-queue = {} # phonenum : bool[]
-waitTime = 5
+manager = Manager()
+queue = manager.dict() # phonenum : bool[]
+waitTime = 10
 
 # post body: {"username": USERNAME, "friends" : ["username1", ...]}
 @twilio_bp.route('/activateAlarm/', methods=['POST'])
 def explode():
     data = request.json
     ret = {}
-    process = multiprocessing.Process(target=childProcess, args=(data,))
+    process = Process(target=childProcess, args=(data,queue,manager))
     process.start()
     ret["success"] = True
     return jsonify(ret)
 
-def childProcess(data):
+def childProcess(data, queue, manager):
     friends = data["friends"]
     session = Session()
 
     response = VoiceResponse()
-    response.say("YOU ARE A VEGETABLE. GET UP NOW. NOW. NOW. NOW. NOW.")
+    response.say("WAKE UP! GET UP! HELP YOUR FRIEND GET UP!")
     count = 0
     for friend in friends:
         user = session.query(User).filter_by(username=friend).first()
@@ -46,19 +47,21 @@ def childProcess(data):
                    to=phoneNum,
                    from_="+16507614503")
         message = client.messages.create(
-                      body='Reply yes/no to the civic duty of ' +
+                      body='Reply yes / no to the civic duty of ' +
                            'waking up ' + data['username'],
                       from_='+16507614503',
                       to=phoneNum
                   )
         if phoneNum not in queue:
-            queue[phoneNum] = [False]
-        else:
-            queue[phoneNum].append(False)
+            lst = manager.list()
+            queue[phoneNum] = lst
+        queue[phoneNum].append(False)
         print(count)
+
         count += 1
         time.sleep(waitTime)
-        
+        print(queue)
+        print("----")
         if queue[phoneNum].pop(0):
             break
     if len(queue[phoneNum]) == 0:
@@ -84,10 +87,17 @@ def callback():
 def logResponse():
     body = request.values.get('Body', None)
     phoneNum = request.values.get('From', None)
-    print(queue)
+    resp = MessagingResponse()
     if 'yes' in body.lower() and phoneNum in queue:
-        queue[phoneNum][0] = True
-        resp = MessagingResponse()
+        count = 0
+        while count < len(queue[phoneNum]) and not queue[phoneNum][count]:
+            print("ok")
+            print(queue[phoneNum][count])
+            queue[phoneNum][count] = True
+            count +=1
         resp.message("Thank you!")
-        return str(resp)
-    return str(MessagingResponse())
+        print(queue)
+        print("^^^^^^^^^")
+    elif 'no' in body.lower():
+        resp.message("Aww, we'll try the next friend")
+    return str(resp)
