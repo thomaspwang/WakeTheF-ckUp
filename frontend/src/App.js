@@ -9,7 +9,7 @@ function App() {
 
   const [user] = useAtom(currUserAtom);
 
-  return <Alarm/>
+  return <Login/>
 }
 
 export default App;
