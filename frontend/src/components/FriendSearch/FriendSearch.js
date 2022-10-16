@@ -8,7 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import "./FriendSearch.css"
+import "./FriendSearch.css";
  
 function FriendSearch() {
   const searchUrl = "http://localhost:4000/users/addFriend/"
@@ -61,26 +61,29 @@ function FriendSearch() {
   }, [])
 
   return (
-        <div className="main">
-          <p>find friends</p>
+    <div className="outer-box">
+      <div className="main">
+        <div className="title">find friends</div>
           <div className="search">
             <TextField
+              style={{ width: "30vw", textAlignLast: 'center' }}
               id="outlined-basic"
               variant="outlined"
               fullWidth
-              label="Search"
+              label="search"
+              size="small"
               onChange={inputHandler}
             />
             {response && <><small style={{ color: 'red' }}>{response}</small><br /></>}<br />
             <Button
-              style={{ marginTop: "10px", backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px" }}
+              style={{ backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px", marginBottom: "5px"}}
               onClick={handleSubmit}
               variant="contained"
             >
-              Add Friend
+              add friend
             </Button>
           </div>
-          <p class="title">current friends</p>
+          <p class="title"> current friends</p>
           {/* <List>
             <>
               {
@@ -89,8 +92,10 @@ function FriendSearch() {
               }
             </>
           </List> */}
-        </div>
-    );
+    </div>
+    
+    </div>
+  );
 }
 
 export default FriendSearch;
