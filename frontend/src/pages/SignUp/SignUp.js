@@ -94,7 +94,8 @@ function SignUp() {
                 <input className='inputSignup' type="phone" {...phone} />
             </div>
             {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
-            <p className=" dont fucking know">Have an account? Login here.</p>
+            <a href = "http://localhost:3000" className=" dont fucking know">Have an account? Login here.</a>
+            <br />
             <input className='btnLogin' type="button" value={loading ? 'Loading...' : 'Sign Up'} onClick={handleSignUp} disabled={loading} /><br />
         </div>
     )
