@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./SignUp.css"
 import { useAtom } from "jotai";
 import { currUserAtom } from "../../atoms";
+import { useNavigate } from "react-router-dom";
 
 const useFormInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -25,6 +26,8 @@ function SignUp() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useAtom(currUserAtom);
+
+    const navigate = useNavigate();
 
 
     const handleSignUp = async () => {
@@ -50,7 +53,7 @@ function SignUp() {
         setError("Account already exists! Try logging in.");
       } else {
         setUser(username.value);
-        // history('/main');
+        navigate("/alarm")
       }
   
       const responseJson = await response.json();
