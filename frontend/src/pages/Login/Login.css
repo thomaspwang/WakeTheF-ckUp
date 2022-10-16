@@ -43,91 +43,91 @@
 }
 
 .text-large {
-    /* wake the f*ck up */
-    width: 324px;
-    height: 52px;
-    margin-bottom: 10px;
-    /* left: 255px;
-    top: 420px; */
+  /* wake the f*ck up */
+  width: 324px;
+  height: 52px;
+  margin-bottom: 10px;
+  /* left: 255px;
+  top: 420px; */
 
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 52px;
-    /* identical to box height */
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 52px;
+  /* identical to box height */
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    color: #000000;
-  }
+  color: #000000;
+}
 
-  .text-subtitle {
-    /* never sleep through an alarm ever again. */
+.text-subtitle {
+  /* never sleep through an alarm ever again. */
 
-    /* position: absolute; */
-    width: 371px;
-    height: 26px;
-    margin-bottom: 30px;
-    /* left: 255px;
-    top: 488px; */
+  /* position: absolute; */
+  width: 371px;
+  height: 26px;
+  margin-bottom: 30px;
+  /* left: 255px;
+  top: 488px; */
 
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 26px;
-    /* identical to box height */
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+  /* identical to box height */
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    color: #000000;
-  }
+  color: #000000;
+}
 
-  .form-title {
-    /* username */
+.form-title {
+  /* username */
 
-    /* position: absolute; */
-    width: 97px;
-    height: 26px;
-    margin-bottom: 10px;
-    /* left: 255px;
-    top: 550px; */
+  /* position: absolute; */
+  width: 100%;
+  height: 26px;
+  margin-bottom: 10px;
+  /* left: 255px;
+  top: 550px; */
 
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
-    /* identical to box height */
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  /* identical to box height */
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    color: #000000;
-  }
+  color: #000000;
+}
 
-  .form-extra {
-    /* don’t have an account? sign up. */
+.form-extra {
+  /* don’t have an account? sign up. */
 
-    /* position: absolute; */
-    /* width: 292px; */
-    margin-top: 20px;
-    height: 26px;
-    /* left: 330px;
-    top: 852px; */
+  /* position: absolute; */
+  /* width: 292px; */
+  margin-top: 20px;
+  height: 26px;
+  /* left: 330px;
+  top: 852px; */
 
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 26px;
-    /* identical to box height */
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  /* identical to box height */
 
-    align-items: center;
-    text-align: center;
+  align-items: center;
+  text-align: center;
 
-    color: #000000;
-  }
+  color: #000000;
+}

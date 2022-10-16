@@ -21,10 +21,12 @@
     align-items: center;
 }
 
-#oncall-button{
+#add-button{
     font-family: 'DM Sans';
     text-transform: unset !important;
     background-color: rgba(186, 209, 250, .4);
+    width: 300px;
+    height: 40px;
 }
 
 #beepbeep {
@@ -46,6 +48,7 @@
 
 #demo-multiple-name {
     text-align-last: center;
+    width: 5vw;
 }
 
 #demo-multiple-name-label {
