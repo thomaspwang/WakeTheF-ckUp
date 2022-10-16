@@ -1,12 +1,16 @@
-import React from 'react';
+import  React, { useEffect, useState } from "react";
 import "./datetime.css";
 import DateTimeDisplay from './DateTimeDisplay';
 import { useCountdown } from './useCountdown';
+import { currUserAtom } from "../../atoms";
+import { useAtom } from "jotai";
 
 const ExpiredNotice = () => {
 
+  const [user, setUser] = useAtom(currUserAtom);
+
   const notifyTwilio = async () => {
-    searchUrl = `http://localhost:4000/twlio/activateAlarm`
+    const searchUrl = `http://localhost:4000/twlio/activateAlarm`
     const response = await fetch(searchUrl, {
       mode: 'cors',
       method: 'POST',
