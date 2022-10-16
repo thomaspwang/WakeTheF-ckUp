@@ -26,6 +26,7 @@
     text-transform: unset !important;
     background-color: rgba(186, 209, 250, .4);
     width: 300px;
+    height: 40px;
 }
 
 #beepbeep {

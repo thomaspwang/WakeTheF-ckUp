@@ -24,6 +24,7 @@ form {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-bottom: 5vh;
 }
 
 label {
@@ -31,14 +32,14 @@ label {
 }
 
 #countdown-date-time {
-    border-radius: 6vh;
+    border-radius: 1vh;
     font-family: "DM Sans";
-    width: 8vw;
+    width: 10vw;
     border-style: none;
 }
 
 #sleebee {
-    max-width: 20vw;
+    max-width: 19vw;
     height: auto;
 }
 

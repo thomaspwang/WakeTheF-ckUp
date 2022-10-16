@@ -8,9 +8,14 @@ from twilio.twiml.voice_response import VoiceResponse, Say
 import json, os, time, multiprocessing
 
 twilio_bp = Blueprint('twilio', __name__)
+try:
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+except:
+    account_sid = 0
+    auth_token = 0
 
-account_sid = os.environ['TWILIO_ACCOUNT_SID']
-auth_token = os.environ['TWILIO_AUTH_TOKEN']
+
 client = Client(account_sid, auth_token)
 
 queue = {} # phonenum : bool[]
@@ -31,7 +36,7 @@ def childProcess(data):
     session = Session()
 
     response = VoiceResponse()
-    response.say("YOU ARE A VEGETABLE. GET UP NOW NOW NOW NOW NOW")
+    response.say("YOU ARE A VEGETABLE. GET UP NOW. NOW. NOW. NOW. NOW.")
     count = 0
     for friend in friends:
         user = session.query(User).filter_by(username=friend).first()
