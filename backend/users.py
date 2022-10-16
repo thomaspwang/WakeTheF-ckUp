@@ -88,7 +88,7 @@ def setOncall():
     session.close()
     return jsonify(ret)
 
-# post body: {"username": USERNAME, "friends" : ["username1", ...]}
+# post body: {"username": USERNAME, "friend" : "username1"}
 @users_bp.route('/addFriend/', methods=['POST'])
 def addFriends():
     data = request.json

@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import "./FriendSearch.css";
  
 function FriendSearch() {
-  const searchUrl = "http://localhost:4000/users/addFriend/"
+  const searchUrl = "http://34.168.40.206:4000/users/addFriend/"
 
   const [user, setUser] = useAtom(currUserAtom);
   const [inputText, setInputText] = useState("");
@@ -49,7 +49,7 @@ function FriendSearch() {
   };
 
   const getFriends = async () => {
-    const endpoint = `http://localhost:4000/users/getFriends/?username=${user}`
+    const endpoint = `http://34.168.40.206:4000/users/getFriends/?username=${user}`
     fetch(endpoint, {
       mode: 'cors',
       method: 'GET',
