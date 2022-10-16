@@ -2,10 +2,15 @@ from flask import Blueprint, jsonify, make_response, request
 from sqlalchemy import exc
 from database import Session
 from model import User
-import json
-import random
+import json, os, random, requests
 
 users_bp = Blueprint('users', __name__)
+
+try:
+    gmap_api_key = os.environ['GMAPS_API_KEY']
+except:
+    gmap_api_key = None
+
 
 # Adds a new user in the db, only populating the
 # username and password fields. If there is already 
@@ -98,7 +103,22 @@ def addFriends():
     return jsonify(ret)
 
 def geocode(address):
+    if gmap_api_key != None:
+        res = requests.get("https://maps.googleapis.com/maps/api/geocode/json" + \
+                           "?address=" + address + "&key=" + gmap_api_key)
+        results = res.json()['results']
+        if results != []:
+            lat = results[0]['geometry']['location']['lat']
+            lng = results[0]['geometry']['location']['lng']
+            return lat, lng
     return 37.86253507889059 + random.uniform(-1, 1), -122.26139173001866 + random.uniform(-1, 1)
+
+@users_bp.route('/testGeo/', methods=['GET'])
+def bop():
+    print(gmap_api_key)
+    geocode('2318 Parker Street, Berkeley, CA, 94704, US')
+    return jsonify({})
+
 
 # get params: ?username=USERNAME
 @users_bp.route('/getFriends/', methods=['GET'])
