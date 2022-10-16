@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "./Login.css"
+import { useNavigate } from "react-router-dom";
 
 const useFormInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -18,6 +19,36 @@ function Login() {
     const password = useFormInput('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLogin = async () => {
+
+        const response = await fetch("http://localhost:4000/users/login/", {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Origin' : 'http://localhost:3000'
+        },
+        body: JSON.stringify({ 
+          "username" : username.value,
+          "password" : password.value,
+        })
+        })
+
+        response.text()
+        .then(data => {
+            console.log(data)
+            if (data == "true") {
+                navigate("/alarm")
+            } else {
+                setError("the username or password you submitted is not correct!")
+            }
+        })
+    }
+
+
     return (
         <div className="login">
             <p className="text-large">wake the f*ck up</p>
@@ -34,8 +65,9 @@ function Login() {
                 <input className='inputLogin' type="password" {...password} autoComplete="new-password" />
             </div>
             {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
-            <p className=" dont fucking know">don't have an account? sign up here</p>
-            <input className='btnLogin' type="button" value={loading ? 'Loading...' : 'Login'} disabled={loading} /><br />
+            <a href="http://localhost:3000/signup" className=" dont fucking know">don't have an account? sign up here</a>
+            <br />
+            <input className='btnLogin' type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
         </div>
     )
 }

@@ -26,7 +26,7 @@ function FriendSearch() {
       },
       body: JSON.stringify({ 
         "username" : user,
-        "friend" : "this doesn't work for some reason"
+        "friend" : inputText
       })
     });
 

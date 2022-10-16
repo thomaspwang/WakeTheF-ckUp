@@ -1,4 +1,6 @@
 import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route }
+    from 'react-router-dom';
 import './App.css';
 import {useAtom} from 'jotai'
 import {currUserAtom} from "./atoms.js"
@@ -10,10 +12,17 @@ import FriendsDropdown from './components/FriendsDropdown/FriendsDropdown';
 import Friends from './pages/Friends/Friends';
 
 function App() {
-
-  const [user] = useAtom(currUserAtom);
-
-  return <Alarm/>
+  
+  return (
+    <Router>
+      <Routes>
+        <Route path ="/" element={<Login/>}/>
+        <Route path ="/signup" element={<SignUp/>}/>
+        <Route path ="/alarm" element={<Alarm/>}/>
+        <Route path ="/friends" element={<Friends/>}/>
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;
