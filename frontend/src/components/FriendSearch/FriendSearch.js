@@ -10,6 +10,7 @@ function FriendSearch() {
   const [user, setUser] = useAtom(currUserAtom);
   const [inputText, setInputText] = useState("");
   const [response, setResponse] = useState(null);
+  const [friends, setFriends] = useState([]);
 
   let inputHandler = (e) => {
     setInputText(e);
@@ -29,12 +30,7 @@ function FriendSearch() {
         "friend" : inputText
       })
     });
-
-    if (response.status === 400) {
-      setResponse("Friend doesn't exist!");
-    } else {
-      setResponse("Friend added!")
-    }
+    
   };
 
     return (
