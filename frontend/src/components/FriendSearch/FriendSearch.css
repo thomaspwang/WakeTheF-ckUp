@@ -1,0 +1,14 @@
+.main {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+#add-friends-btn {
+    margin-top: 10px;
+    width: 300px;
+}
+
+#outlined-basic {
+    
+}

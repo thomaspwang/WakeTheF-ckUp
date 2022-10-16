@@ -8,6 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import "./FriendSearch.css"
  
 function FriendSearch() {
   const searchUrl = "http://localhost:4000/users/addFriend/"
@@ -61,7 +62,7 @@ function FriendSearch() {
 
   return (
         <div className="main">
-          <h1>Find Friends</h1>
+          <p>find friends</p>
           <div className="search">
             <TextField
               id="outlined-basic"
@@ -71,9 +72,9 @@ function FriendSearch() {
               onChange={inputHandler}
             />
             {response && <><small style={{ color: 'red' }}>{response}</small><br /></>}<br />
-            <Button onClick={handleSubmit}>Add Friend</Button>
+            <Button id="add-friends-btn" onClick={handleSubmit}>add friend</Button>
           </div>
-          <p class="title"> current friends</p>
+          <p class="title">current friends</p>
           {/* <List>
             <>
               {
