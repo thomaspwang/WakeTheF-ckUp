@@ -8,9 +8,9 @@ import { useAtom } from "jotai";
 const ExpiredNotice = () => {
 
   const [user, setUser] = useAtom(currUserAtom);
-
+  
   const notifyTwilio = async () => {
-    const searchUrl = `http://localhost:4000/twlio/activateAlarm`
+    const searchUrl = `http://34.168.40.206:4000/twilio/activateAlarm/`
     const response = await fetch(searchUrl, {
       mode: 'cors',
       method: 'POST',
