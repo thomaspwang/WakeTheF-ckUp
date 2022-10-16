@@ -20,12 +20,14 @@ except:
 
 manager = Manager()
 queue = manager.dict() # phonenum : bool[]
-waitTime = 10
+waitTime = 30
 
 # post body: {"username": USERNAME, "friends" : ["username1", ...]}
 @twilio_bp.route('/activateAlarm/', methods=['POST'])
 def explode():
     data = request.json
+    print(data['username'])
+    print("------")
     session = Session()
     data['friends'] = session.query(User.oncall).filter_by(username=data['username']).first()
     data['friends'] = data['friends'][0]
@@ -69,7 +71,7 @@ def childProcess(data, queue, manager):
         print("----")
         if queue[phoneNum].pop(0):
             break
-    if len(queue[phoneNum]) == 0:
+    if phoneNum in queue and len(queue[phoneNum]) == 0:
         del queue[phoneNum]
     session.close()
 
@@ -97,13 +99,13 @@ def logResponse():
     if 'yes' in body.lower() and phoneNum in queue:
         count = 0
         while count < len(queue[phoneNum]) and not queue[phoneNum][count]:
-            print("ok")
-            print(queue[phoneNum][count])
+            #print("ok")
+            #print(queue[phoneNum][count])
             queue[phoneNum][count] = True
             count +=1
         resp.message("Thank you!")
-        print(queue)
-        print("^^^^^^^^^")
-    elif 'no' in body.lower():
+        #print(queue)
+        #print("^^^^^^^^^")
+    elif 'no' in body.lower() and phoneNum in queue:
         resp.message("Aww, we'll try the next friend")
     return str(resp)
