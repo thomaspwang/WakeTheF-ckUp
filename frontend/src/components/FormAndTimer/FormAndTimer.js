@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import CountdownTimer from "../CountdownTimer/CountdownTimer";
+import "./FormAndTimer.css"
 
 const FormAndTimer = (props) => {
   const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
@@ -22,21 +23,34 @@ const FormAndTimer = (props) => {
   return (
     <>
         <div className="countdown-container">
-        <form>
-            <label htmlFor="countdown-date-time">
-            Select a Date and Time:
-            </label>
-            <input
-            type="datetime-local"
-            id="countdown-date-time"
-            name="countdown-date-time"
-            onChange={handleChange}
-            />
-        </form>
-        <p>We'll call you when your alarm goes off! ... if you don't answer though, 
-        we'll call each one of your friends one by one, ordered by their proximity. Sleep in and
-        you risk losing friends!</p>
-        <CountdownTimer targetDate={targetDate} />
+        
+          <div id="description-box">
+            <p id="description">we'll call you when your alarm goes off! buuut, if you don't answer, 
+            we'll call each one of your friends one by one, ordered by their proximity. sleep in and
+            you risk losing friends!</p>
+            <br/>
+            <p id="description">(if none of your friends pick up, then we're sure that 911 will :D)</p>
+            
+          </div>
+          
+          <div id="picture-box">
+            <img id="sleebee" src={require("../../assets/sleebee.png")}></img>
+          </div>
+          
+          <CountdownTimer targetDate={targetDate} />
+
+
+          <form>
+              <label htmlFor="countdown-date-time">
+              select a date and time:&nbsp;&nbsp;
+              </label>
+              <input
+              type="datetime-local"
+              id="countdown-date-time"
+              name="countdown-date-time"
+              onChange={handleChange}
+              />
+          </form>
         </div>
     </>
   );
