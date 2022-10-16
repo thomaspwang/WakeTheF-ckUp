@@ -8,6 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { useNavigate } from "react-router-dom";
 import "./FriendSearch.css";
  
 function FriendSearch() {
@@ -17,6 +18,7 @@ function FriendSearch() {
   const [inputText, setInputText] = useState("");
   const [response, setResponse] = useState(null);
   const [friends, setFriends] = useState([]);
+  const navigate = useNavigate();
   // const [error, setError] = useState(null);
 
   const getFriends = async () => {
@@ -84,6 +86,10 @@ function FriendSearch() {
     console.log(friends)
   }, [])
 
+  const navigateAlarm = () => {
+    navigate("/alarm")
+  }
+
   return (
     <div className="outer-box">
       <div className="main">
@@ -91,7 +97,7 @@ function FriendSearch() {
         <div className="title">find friends</div>
           <div className="search">
             <TextField
-              style={{ width: "30vw", textAlignLast: 'center' }}
+              style={{ width: "20vw", textAlignLast: 'center' }}
               id="outlined-basic"
               variant="outlined"
               fullWidth
@@ -100,6 +106,8 @@ function FriendSearch() {
               onChange={inputHandler}
             />
             {response && <><small style={{ color: 'red' }}>{response}</small><br /></>}<br />
+            
+            <div>
             <Button
               style={{ backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px", marginBottom: "5px"}}
               onClick={handleSubmit}
@@ -107,6 +115,15 @@ function FriendSearch() {
             >
               add friend
             </Button>
+            <Button
+                style={{ backgroundColor: "rgba(255, 242, 134, .7)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px", marginBottom: "5px"}}
+                onClick={navigateAlarm}
+                variant="contained"
+              >
+                go back
+            </Button>
+            </div>
+
           </div>
           <p class="title"> current friends</p>
           <List style={{ textAlignLast: "center" }}>
