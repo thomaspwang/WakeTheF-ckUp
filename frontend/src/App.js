@@ -13,7 +13,7 @@ function App() {
 
   const [user] = useAtom(currUserAtom);
 
-  return <FriendSearch/>
+  return <Alarm/>
 }
 
 export default App;

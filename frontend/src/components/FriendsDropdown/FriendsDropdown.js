@@ -13,6 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { Button, Paper } from "@material-ui/core";
 import { useAtom } from 'jotai';
 import { currUserAtom } from '../../atoms';
+import "./FriendDropdown.css";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -81,10 +82,12 @@ export default function FriendsDropdown() {
   };
 
   return (
-    <div>
-      <div>
+    <div id="outer-box">
+        <div id="inner-box">
+        <img id="beepbeep" src={require("../../assets/beepbeep.png")}></img>
+        <p class="title">add friends to your alarm!</p>
         <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel id="demo-multiple-name-label">Friends</InputLabel>
+          <InputLabel id="demo-multiple-name-label">friends</InputLabel>
           <Select
             labelId="demo-multiple-name-label"
             id="demo-multiple-name"
@@ -106,9 +109,9 @@ export default function FriendsDropdown() {
           </Select>
         </FormControl>
       </div>
-      <div>
-        <Button onClick={handleSubmit}>Add friends oncall</Button>
-        <p> Current Oncall Friends</p>
+      <div id="second-box">
+        <Button id="oncall-button" onClick={handleSubmit}>add</Button>
+        <p class="title" id="curr-oncall">current oncall friends</p>
         <List>
           <>
             {

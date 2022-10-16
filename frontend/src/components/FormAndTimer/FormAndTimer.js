@@ -28,7 +28,7 @@ const FormAndTimer = (props) => {
         we'll call each one of your friends one by one, ordered by their proximity. Sleep in and
         you risk losing friends!</p> */}
         <div id="picture-box">
-          <img src={require("../../assets/sleebee.png")}></img>
+          <img id="sleebee" src={require("../../assets/sleebee.png")}></img>
         </div>
         
         <CountdownTimer targetDate={targetDate} />
