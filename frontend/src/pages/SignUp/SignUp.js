@@ -18,12 +18,18 @@ const useFormInput = initialValue => {
 }
 
 function SignUp() {
-    const username = useFormInput('');
-    const password = useFormInput('');
-    const streetName = useFormInput('');
-    const state = useFormInput('');
-    const city = useFormInput('');
-    const phone = useFormInput('');
+    // const username = useFormInput('');
+    // const password = useFormInput('');
+    // const streetName = useFormInput('');
+    // const state = useFormInput('');
+    // const city = useFormInput('');
+    // const phone = useFormInput('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [street, setStreet] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [phone, setPhone] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useAtom(currUserAtom);
@@ -41,7 +47,7 @@ function SignUp() {
         body: JSON.stringify({ 
           "username" : username.value,
           "password" : password.value,
-          "address" : streetName.value + state.value + city.value,
+          "address" : street.value + state.value + city.value,
           "phone" : phone.value
         })
       });
@@ -59,54 +65,78 @@ function SignUp() {
       console.log(responseJson);
     }
 
+    const handlePasswordChange = e => {
+      setPassword(e.target.value);
+    }
+  
+    const handleUsernameChange = e => {
+      setUsername(e.target.value);
+    }
+
+    const handleStreetChange = e => {
+      setStreet(e.target.value);
+    }
+  
+    const handleCityChange = e => {
+      setCity(e.target.value);
+    }
+
+    const handleStateChange = e => {
+      setState(e.target.value);
+    }
+
+    const handlePhoneChange = e => {
+      setPhone(e.target.value);
+    }
+
 
     return (
-      <div class="signup">
-        <div class="left-half">
-          <div class="signup-stuff">
-            <div class="text-large">
+      <div className="signup">
+        <div className="left-half">
+          <div className="signup-stuff">
+            <div className="text-large">
               create an account
             </div>
 
-            <div class="text-subtitle">
+            <div className="text-subtitle">
               to never sleep through an alarm again.
             </div>
 
             <div>
-              <div class="form-title">username *</div>
+              <div className="form-title">username *</div>
 
               <TextField
                 style={{ width: "100%" }}
                 variant="outlined"
                 size="small"
-                // onChange={handleUsernameChange}
+                onChange={handleUsernameChange}
               />
             </div>
 
             <div style={{ marginTop: 10 }}>
-              <div class="form-title">password *</div>
+              <div className="form-title">password *</div>
 
               <TextField
                 style={{ width: "100%" }}
                 variant="outlined"
                 size="small"
-                // onChange={handlePasswordChange}
+                onChange={handlePasswordChange}
               />
             </div>
 
             <div style={{ marginTop: 10 }}>
-              <div class="form-title">phone number *</div>
+              <div className="form-title">phone number *</div>
 
               <TextField
                 style={{ width: "100%" }}
                 variant="outlined"
                 size="small"
-                // onChange={handlePasswordChange}
+                onChange={handlePhoneChange}
               />
             </div>
 
             <div style={{ marginTop: 10 }}>
-              <div class="form-title">address</div>
+              <div className="form-title">address</div>
 
               <div class="tiny-font" style={{ marginTop: -3 }}>street name *</div>
 
@@ -114,29 +144,27 @@ function SignUp() {
                 style={{ width: "100%" }}
                 variant="outlined"
                 size="small"
-                // onChange={handlePasswordChange}
+                onChange={handleStreetChange}
               />
 
               <div>
-                <div class="tiny-font">city *</div>
+                <div className="tiny-font">city *</div>
 
                 <TextField
                   style={{ width: "100%" }}
                   variant="outlined"
                   size="small"
-                  // onChange={handlePasswordChange}
+                  onChange={handleCityChange}
                 />
-                <div class="tiny-font">state *</div>
+                <div className="tiny-font">state *</div>
 
                 <TextField
                   style={{ width: "100%" }}
                   variant="outlined"
                   size="small"
-                  // onChange={handlePasswordChange}
+                  onChange={handleStateChange}
                 />
               </div>
-
-              
 
             </div>
 
@@ -152,18 +180,19 @@ function SignUp() {
             sign up
           </Button>
 
-          <a href = "http://localhost:3000" class="form-extra">
+          <a href = "http://localhost:3000" className="form-extra">
             already have an account? login here.
           </a>
 
           </div>
         </div>
-        <div class="right-half">
-          <div class="rectangle">
-            <img class="tire" src={require("../../assets/blankibee.png")}></img>
+        <div className="right-half">
+          <div className="rectangle">
+            <img className="tire" src={require("../../assets/blankibee.png")}></img>
           </div>
         </div>
       </div>
+
         // <div className="signup">
         //     <p className="text-large">wake the f*ck up</p>
         //     <br />

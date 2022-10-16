@@ -67,23 +67,24 @@ function Login() {
   }
 
   return (
-    <div class="login">
-      <div class="left-half">
-        <div class="login-stuff">
-          <div class="text-large">
+    <div className="login">
+      <div className="left-half">
+        <div className="login-stuff">
+          <div className="text-large">
             wake the f*ck up
           </div>
             
-          <div class="text-subtitle">
+          <div className="text-subtitle">
             using the power of friendship.
           </div>
 
           <div>
-            <div class="form-title">username</div>
+            <div className="form-title">username</div>
 
             <TextField
               style={{ width: "100%" }}
               variant="outlined"
+              size="small"
               onChange={handleUsernameChange}
             />
 
@@ -91,11 +92,12 @@ function Login() {
           </div>
 
           <div style={{ marginTop: 10 }}>
-            <div class="form-title">password</div>
+            <div className="form-title">password</div>
 
             <TextField
               style={{ width: "100%" }}
               variant="outlined"
+              size="small"
               onChange={handlePasswordChange}
             />
 
@@ -119,16 +121,16 @@ function Login() {
 
           {/* <input class='btnLogin' type="button" value={loading ? 'Loading...' : 'Login'} disabled={loading} /> */}
 
-          <div class="form-extra">
+          <div className="form-extra">
             <a href="http://localhost:3000/signup">
                 don't have an account? sign up here.
             </a>
           </div>
         </div>
       </div>
-      <div class="right-half">
-        <div class="rectangle">
-          <img class="tire" src={require("../../assets/tirealarmbee.png")}></img>
+      <div className="right-half">
+        <div className="rectangle">
+          <img className="tire" src={require("../../assets/tirealarmbee.png")}></img>
         </div>
       </div>
     </div>
