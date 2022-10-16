@@ -76,21 +76,17 @@ def setOncall():
 @users_bp.route('/addFriend/', methods=['POST'])
 def addFriends():
     data = request.json
-    friends = []
     ret = {}
 
     session = Session()
     user = session.query(User).filter_by(username=data['username']).first()
-    result = user.friends
-    if result != None:
-        friends = result
+    friends = [] + user.friends
     
     # N^2 oops
     friend = data['friend']
     if friend not in friends:
         friends.append(friend)
     user.friends = friends
-    
     try:
         ret['success'] = True
         session.commit()
