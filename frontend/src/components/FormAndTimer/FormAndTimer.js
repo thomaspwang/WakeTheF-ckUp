@@ -25,9 +25,24 @@ const FormAndTimer = (props) => {
         <div className="countdown-container">
         
           <div id="description-box">
-            <p id="description">we'll call you when your alarm goes off! buuut, if you don't answer, 
-            we'll call each one of your friends one by one, ordered by their proximity. sleep in and
-            you risk losing friends!</p>
+            <p id="description">
+              we'll call you when your alarm goes off!
+            </p>
+            <p id="description">
+              <div>
+                buuut, if you don't answer, 
+              </div>
+              <div>
+                we'll call each one of your friends one by one,
+              </div>
+               <div>
+                ordered by their proximity.
+               </div>
+            </p>
+            <p id="description">
+              sleep in and
+            you risk losing friends!
+            </p>
             <br/>
             <p id="description">(if none of your friends pick up, then we're sure that 911 will :D)</p>
             

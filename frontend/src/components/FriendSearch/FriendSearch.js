@@ -8,6 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import "./FriendSearch.css";
  
 function FriendSearch() {
   const searchUrl = "http://localhost:4000/users/addFriend/"
@@ -16,6 +17,7 @@ function FriendSearch() {
   const [inputText, setInputText] = useState("");
   const [response, setResponse] = useState(null);
   const [friends, setFriends] = useState([]);
+  // const [error, setError] = useState(null);
 
   const getFriends = async () => {
     const endpoint = `http://localhost:4000/users/getFriends/?username=${user}`
@@ -64,21 +66,39 @@ function FriendSearch() {
         "friend" : inputText
       })
     });
+
+    console.log(response)
+    getFriends()
+  
+    // if (response == "true") {
+    //   setUser(inputText)
+    // } else {
+    //   setError("the username you submitted doesn't exist!")
+    // }
   };
 
   return (
-        <div className="main">
-          <h1>Find Friends</h1>
+    <div className="outer-box">
+      <div className="main">
+        <div className="title">find friends</div>
           <div className="search">
             <TextField
+              style={{ width: "30vw", textAlignLast: 'center' }}
               id="outlined-basic"
               variant="outlined"
               fullWidth
-              label="Search"
+              label="search"
+              size="small"
               onChange={inputHandler}
             />
             {response && <><small style={{ color: 'red' }}>{response}</small><br /></>}<br />
-            <Button onClick={handleSubmit}>Add Friend</Button>
+            <Button
+              style={{ backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px", marginBottom: "5px"}}
+              onClick={handleSubmit}
+              variant="contained"
+            >
+              add friend
+            </Button>
           </div>
           <p class="title"> current friends</p>
           <List>
@@ -90,6 +110,7 @@ function FriendSearch() {
             </>
           </List>
         </div>
+      </div>
     );
 }
 

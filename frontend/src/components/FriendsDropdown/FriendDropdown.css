@@ -13,6 +13,7 @@
 
 .title {
     font-weight: bold;
+    font-size: 25px;
 }
 
 #second-box {
@@ -43,14 +44,20 @@
 }
 
 #curr-oncall {
-    margin-top: 8vh;
+    margin-top: 30px;
+    margin-bottom: 5px;
 }
 
-#demo-multiple-name {
+/* #demo-multiple-name {
     text-align-last: center;
     width: 5vw;
-}
+} */
 
 #demo-multiple-name-label {
     font-family: 'DM Sans';
+}
+
+.button-box {
+    display: flex;
+    flex-direction: row;
 }
