@@ -18,7 +18,8 @@ def addUser():
     ret = {}
     
     session = Session()
-    newUser = User(username=data['username'], password=data['password'])
+    newUser = User(username=data['username'], password=data['password'], \
+                   friends=[], oncall=[])
     session.add(newUser)
     try:
         ret['success'] = True
@@ -30,7 +31,26 @@ def addUser():
     session.close()
     return jsonify(ret)
 
-#@users_bp.route('/setOncall/', methods=['POST'])
+# post body: {"username": USERNAME, "friends" : ["username1", ...]}
+@users_bp.route('/setOncall/', methods=['POST'])
+def setOncall():
+    data = request.json
+    ret = {}
+
+    session = Session()
+    user = session.query(User).filter_by(username=data['username']).first()
+    
+    user.oncall = data["friends"]
+    
+    try:
+        ret['success'] = True
+        session.commit()
+    except exc.SQLAlchemyError:
+        session.rollback()
+        ret['success'] = False
+
+    session.close()
+    return jsonify(ret)
 
 # post body: {"username": USERNAME, "friends" : ["username1", ...]}
 @users_bp.route('/addFriends/', methods=['POST'])
