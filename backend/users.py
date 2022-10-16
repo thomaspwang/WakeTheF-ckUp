@@ -3,6 +3,7 @@ from sqlalchemy import exc
 from database import Session
 from model import User
 import json
+import random
 
 users_bp = Blueprint('users', __name__)
 
@@ -16,10 +17,12 @@ users_bp = Blueprint('users', __name__)
 def addUser():
     data = request.json
     ret = {}
+
+    lat, long = geocode(data['address'])
     
     session = Session()
     newUser = User(username=data['username'], password=data['password'], \
-                   friends=[], oncall=[])
+                   friends=[], oncall=[], lat=lat, long=long, phone=data["phone"])
     session.add(newUser)
     try:
         ret['success'] = True
@@ -80,6 +83,9 @@ def addFriends():
 
     session.close()
     return jsonify(ret)
+
+def geocode(address):
+    return 37.86253507889059 + random.uniform(-1, 1), -122.26139173001866 + random.uniform(-1, 1)
 
 # get params: ?username=USERNAME
 @users_bp.route('/getFriends/', methods=['GET'])

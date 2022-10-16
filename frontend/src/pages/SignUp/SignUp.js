@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import "./SignUp.css"
+import { useAtom } from "jotai";
+import { currUserAtom } from "../../atoms";
 
 const useFormInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -19,8 +21,43 @@ function SignUp() {
     const streetName = useFormInput('');
     const state = useFormInput('');
     const city = useFormInput('');
+    const phone = useFormInput('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [user, setUser] = useAtom(currUserAtom);
+
+
+    const handleSignUp = async () => {
+      const response = await fetch("http://localhost:4000/users/newUser/", {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Origin' : 'http://localhost:3000'
+        },
+        body: JSON.stringify({ 
+          "username" : username.value,
+          "password" : password.value,
+          "address" : streetName.value + state.value + city.value,
+          "phone" : phone.value
+        })
+      });
+
+      console.log(response)
+  
+      if (response.status === 400) {
+        setError("Account already exists! Try logging in.");
+      } else {
+        setUser(username.value);
+        // history('/main');
+      }
+  
+      const responseJson = await response.json();
+      console.log(responseJson);
+    }
+
+
     return (
         <div className="signup">
             <p className="text-large">wake the f*ck up</p>
@@ -51,9 +88,14 @@ function SignUp() {
                 <br />
                 <input className='inputSignup' type="state" {...state} />
             </div>
+            <div style={{ marginTop: 10 }}>
+                <p className="form-title">phone</p>
+                <br />
+                <input className='inputSignup' type="phone" {...phone} />
+            </div>
             {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
             <p className=" dont fucking know">Have an account? Login here.</p>
-            <input className='btnLogin' type="button" value={loading ? 'Loading...' : 'Sign Up'} disabled={loading} /><br />
+            <input className='btnLogin' type="button" value={loading ? 'Loading...' : 'Sign Up'} onClick={handleSignUp} disabled={loading} /><br />
         </div>
     )
 }
