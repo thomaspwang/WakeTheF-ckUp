@@ -83,7 +83,7 @@ export default function FriendsDropdown() {
   };
 
   const handleSubmit = async () =>{
-    const response = await fetch("http://localhost:4000/users/setOncall/", {
+    const response = await fetch("http://34.168.40.206:4000/users/setOncall/", {
       mode: 'cors',
       method: 'POST',
       headers: {

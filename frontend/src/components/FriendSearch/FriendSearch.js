@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 import "./FriendSearch.css";
  
 function FriendSearch() {
-  const searchUrl = "http://localhost:4000/users/addFriend/"
+  const searchUrl = "http://34.168.40.206:4000/users/addFriend/"
 
   const [user, setUser] = useAtom(currUserAtom);
   const [inputText, setInputText] = useState("");
@@ -77,9 +77,17 @@ function FriendSearch() {
     // }
   };
 
+  useEffect(() => {
+    getFriends();
+    console.log(user)
+    console.log(typeof friends)
+    console.log(friends)
+  }, [])
+
   return (
     <div className="outer-box">
       <div className="main">
+        <img className="angybee" src={require("../../assets/angybees.png")}></img>
         <div className="title">find friends</div>
           <div className="search">
             <TextField
@@ -101,7 +109,7 @@ function FriendSearch() {
             </Button>
           </div>
           <p class="title"> current friends</p>
-          <List>
+          <List style={{ textAlignLast: "center" }}>
             <>
               {
                 friends.map(friend =>

@@ -40,7 +40,7 @@ function SignUp() {
 
 
     const handleSignUp = async () => {
-      const response = await fetch("http://localhost:4000/users/newUser/", {
+      const response = await fetch("http://34.168.40.206:4000/users/newUser/", {
         mode: 'cors',
         method: 'POST',
         headers: {

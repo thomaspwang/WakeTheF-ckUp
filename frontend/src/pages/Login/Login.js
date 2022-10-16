@@ -33,7 +33,7 @@ function Login() {
 
   const handleLogin = async () => {
 
-    const response = await fetch("http://localhost:4000/users/login/", {
+    const response = await fetch("http://34.168.40.206:4000/users/login/", {
     mode: 'cors',
     method: 'POST',
     headers: {
