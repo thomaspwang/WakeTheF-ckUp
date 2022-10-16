@@ -10,7 +10,7 @@ function App() {
 
   const [user] = useAtom(currUserAtom);
 
-  return <Search/>
+  return <Login/>
 }
 
 export default App;

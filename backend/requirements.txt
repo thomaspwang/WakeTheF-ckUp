@@ -3,3 +3,4 @@ sqlalchemy-cockroachdb==1.4.4
 psycopg2-binary==2.9.4
 flask==2.2.2
 flask_cors==3.0.10
+twilio==7.14.2

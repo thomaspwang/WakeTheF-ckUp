@@ -1,0 +1,36 @@
+.text-large{
+    text-align: left;
+    vertical-align: middle;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 10000;
+    font-size: 40px;
+    line-height: 52px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+    border: 1px solid #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .text-subtitle{
+    text-align: left;
+    vertical-align: middle;
+    font-size: 20px;
+    font-family: "DM Sans";
+    line-height: auto;
+    color: #000000;
+  }
+
+  .form-title{
+    text-align: left;
+    vertical-align: middle;
+    font-size: 20px;
+    font-family: "DM Sans";
+    line-height: auto;
+    color: #000000;
+  }
