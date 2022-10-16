@@ -29,6 +29,7 @@ function Login() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
 
@@ -98,6 +99,8 @@ function Login() {
               style={{ width: "100%" }}
               variant="outlined"
               size="small"
+              type={showPassword ? "text" : 
+            "password"}
               onChange={handlePasswordChange}
             />
 

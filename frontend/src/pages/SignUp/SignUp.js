@@ -34,6 +34,7 @@ function SignUp() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useAtom(currUserAtom);
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
@@ -120,6 +121,8 @@ function SignUp() {
                 style={{ width: "100%" }}
                 variant="outlined"
                 size="small"
+                type={showPassword ? "text" : 
+            "password"}
                 onChange={handlePasswordChange}
               />
             </div>
