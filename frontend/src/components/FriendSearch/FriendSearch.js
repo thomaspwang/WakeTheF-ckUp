@@ -17,6 +17,7 @@ function FriendSearch() {
   const [inputText, setInputText] = useState("");
   const [response, setResponse] = useState(null);
   const [friends, setFriends] = useState([]);
+  // const [error, setError] = useState(null);
 
   let inputHandler = (e) => {
     setInputText(e.target.value);
@@ -37,6 +38,14 @@ function FriendSearch() {
         "friend" : inputText
       })
     });
+
+    console.log(response)
+  
+    // if (response == "true") {
+    //   setUser(inputText)
+    // } else {
+    //   setError("the username you submitted doesn't exist!")
+    // }
   };
 
   const getFriends = async () => {
