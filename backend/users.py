@@ -53,7 +53,7 @@ def setOncall():
     return jsonify(ret)
 
 # post body: {"username": USERNAME, "friends" : ["username1", ...]}
-@users_bp.route('/addFriends/', methods=['POST'])
+@users_bp.route('/addFriend/', methods=['POST'])
 def addFriends():
     data = request.json
     friends = []
@@ -66,9 +66,9 @@ def addFriends():
         friends = result
     
     # N^2 oops
-    for friend in data["friends"]:
-        if friend not in friends:
-            friends.append(friend)
+    friend = data['friend']
+    if friend not in friends:
+        friends.append(friend)
     user.friends = friends
     
     try:
