@@ -1,9 +1,58 @@
-.text-large{
-    text-align: left;
-    vertical-align: middle;
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+.login {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-half {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-left: 13vmax; */
+  /* margin-right: 65vmax; */
+  /* margin-top: 15vmax; */
+}
+
+.right-half {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+}
+
+.rectangle {
+  width: 50vw;
+  height: 100vh;
+  background-color: rgba(255, 242, 134, .3);
+  /* opacity: .3; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tire {
+  max-width: 70%;
+  height: auto;
+}
+
+.login-stuff {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-large {
+    /* wake the f*ck up */
+    width: 324px;
+    height: 52px;
+    margin-bottom: 10px;
+    /* left: 255px;
+    top: 420px; */
+
     font-family: 'DM Sans';
     font-style: normal;
-    font-weight: 10000;
+    font-weight: 700;
     font-size: 40px;
     line-height: 52px;
     /* identical to box height */
@@ -12,25 +61,84 @@
     align-items: center;
 
     color: #000000;
-
-    border: 1px solid #000000;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
-  .text-subtitle{
-    text-align: left;
-    vertical-align: middle;
+  .text-subtitle {
+    /* never sleep through an alarm ever again. */
+
+    /* position: absolute; */
+    width: 371px;
+    height: 26px;
+    margin-bottom: 30px;
+    /* left: 255px;
+    top: 488px; */
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
     font-size: 20px;
-    font-family: "DM Sans";
-    line-height: auto;
+    line-height: 26px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
     color: #000000;
   }
 
-  .form-title{
-    text-align: left;
-    vertical-align: middle;
+  .form-title {
+    /* username */
+
+    /* position: absolute; */
+    width: 97px;
+    height: 26px;
+    margin-bottom: 10px;
+    /* left: 255px;
+    top: 550px; */
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
     font-size: 20px;
-    font-family: "DM Sans";
-    line-height: auto;
+    line-height: 26px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
     color: #000000;
+  }
+
+  .form-extra {
+    /* don’t have an account? sign up. */
+
+    /* position: absolute; */
+    /* width: 292px; */
+    margin-top: 20px;
+    height: 26px;
+    /* left: 330px;
+    top: 852px; */
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    /* identical to box height */
+
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+  }
+
+  .outlined-basic {
+    width: max-content;
+    
+  }
+
+  .contained {
+    background-color: rgba(255, 242, 134, .3);
+    font-family: 'DM SANS';
+    text-transform: lowercase;
   }
