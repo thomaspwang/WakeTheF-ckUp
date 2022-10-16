@@ -27,19 +27,6 @@ const MenuProps = {
   },
 };
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder',
-];
-
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -54,7 +41,36 @@ export default function FriendsDropdown() {
   const [personName, setPersonName] = React.useState([]);
   const [user] = useAtom(currUserAtom);
   const [onCall, setOnCall] = React.useState([]);
+  const [friends, setFriends] = React.useState([]);
   const navigate = useNavigate();
+
+  const getFriends = async () => {
+    const endpoint = `http://localhost:4000/users/getFriends/?username=${user}`
+    const res = await fetch(endpoint, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Origin' : 'http://localhost:3000'
+      }
+    })
+    const data = await res.json();
+    console.log(data)
+    setFriends(data['friends'])
+    // ).then(response =>
+    //   response.json().then(data => data['friends'])
+    //   .then(data => {
+    //     setFriends(data)
+    //   }))
+  }
+
+  React.useEffect(() => {
+    getFriends();
+    // console.log(user)
+    // console.log(typeof friends)
+    console.log(friends)
+  }, [])
 
   const handleChange = (event) => {
     const {
@@ -103,7 +119,7 @@ export default function FriendsDropdown() {
             input={<OutlinedInput label="Friends" />}
             MenuProps={MenuProps}
           >
-            {names.map((name) => (
+            {friends.map((name) => (
               <MenuItem
                 key={name}
                 value={name}

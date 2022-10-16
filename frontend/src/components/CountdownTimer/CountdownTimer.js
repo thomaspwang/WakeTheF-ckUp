@@ -1,9 +1,30 @@
 import React from 'react';
-import "./datetime.css"
+import "./datetime.css";
 import DateTimeDisplay from './DateTimeDisplay';
 import { useCountdown } from './useCountdown';
 
 const ExpiredNotice = () => {
+
+  const notifyTwilio = async () => {
+    searchUrl = `http://localhost:4000/twlio/activateAlarm`
+    const response = await fetch(searchUrl, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Origin' : 'http://localhost:3000'
+      },
+      body: JSON.stringify({ 
+        "username" : user,
+      })
+    });
+  };
+
+  useEffect(() => {
+    notifyTwilio()
+  }, []);
+
   return (
     <div className="expired-notice">
       <span>Expired!!!</span>
