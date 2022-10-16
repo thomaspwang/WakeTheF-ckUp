@@ -26,7 +26,15 @@
   width: 50vw;
   height: 100vh;
   background-color: rgba(255, 242, 134, .3);
-  opacity: .3;
+  /* opacity: .3; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tire {
+  max-width: 70%;
+  height: auto;
 }
 
 .login-stuff {
@@ -84,6 +92,7 @@
     /* position: absolute; */
     width: 97px;
     height: 26px;
+    margin-bottom: 10px;
     /* left: 255px;
     top: 550px; */
 
@@ -121,4 +130,15 @@
     text-align: center;
 
     color: #000000;
+  }
+
+  .outlined-basic {
+    width: max-content;
+    
+  }
+
+  .contained {
+    background-color: rgba(255, 242, 134, .3);
+    font-family: 'DM SANS';
+    text-transform: lowercase;
   }
