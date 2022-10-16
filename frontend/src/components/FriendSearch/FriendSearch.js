@@ -22,7 +22,7 @@ function FriendSearch() {
   // const [error, setError] = useState(null);
 
   const getFriends = async () => {
-    const endpoint = `http://localhost:4000/users/getFriends/?username=${user}`
+    const endpoint = `http://34.168.40.206:4000/users/getFriends/?username=${user}`
     const res = await fetch(endpoint, {
       mode: 'cors',
       method: 'GET',
