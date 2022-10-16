@@ -26,14 +26,19 @@ waitTime = 10
 @twilio_bp.route('/activateAlarm/', methods=['POST'])
 def explode():
     data = request.json
+    session = Session()
+    data['friends'] = session.query(User.oncall).filter_by(username=data['username']).first()
+    data['friends'] = data['friends'][0]
     ret = {}
     process = Process(target=childProcess, args=(data,queue,manager))
     process.start()
     ret["success"] = True
+    session.close()
     return jsonify(ret)
 
 def childProcess(data, queue, manager):
     friends = data["friends"]
+    
     session = Session()
 
     response = VoiceResponse()
@@ -66,6 +71,7 @@ def childProcess(data, queue, manager):
             break
     if len(queue[phoneNum]) == 0:
         del queue[phoneNum]
+    session.close()
 
 @twilio_bp.route('/testSend/', methods=['GET'])
 def test():
