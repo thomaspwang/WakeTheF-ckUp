@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
-import List from "./list"
-import "./search.css";
-
-function search() {
+import List from "./List"
+import "./Search.css";
+ 
+function Search() {
     return (
         <div className="main">
           <h1>React Search</h1>
@@ -19,4 +19,6 @@ function search() {
         </div>
     );
 }
+
+export default Search;
 
