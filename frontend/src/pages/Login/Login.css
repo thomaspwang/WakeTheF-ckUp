@@ -131,14 +131,3 @@
 
     color: #000000;
   }
-
-  .outlined-basic {
-    width: max-content;
-    
-  }
-
-  .contained {
-    background-color: rgba(255, 242, 134, .3);
-    font-family: 'DM SANS';
-    text-transform: lowercase;
-  }

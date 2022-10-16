@@ -79,7 +79,7 @@ function Login() {
                 backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none"
             }}
             variant="contained"
-            disabled={username === "", password === ""}
+            // disabled={username === "", password === ""}
           >
             login
           </Button>
