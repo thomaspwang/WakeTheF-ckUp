@@ -13,6 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { Button, Paper } from "@material-ui/core";
 import { useAtom } from 'jotai';
 import { currUserAtom } from '../../atoms';
+import { useNavigate } from "react-router-dom";
 import "./FriendDropdown.css";
 
 const ITEM_HEIGHT = 48;
@@ -53,6 +54,7 @@ export default function FriendsDropdown() {
   const [personName, setPersonName] = React.useState([]);
   const [user] = useAtom(currUserAtom);
   const [onCall, setOnCall] = React.useState([]);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const {
@@ -80,6 +82,10 @@ export default function FriendsDropdown() {
     });
     setOnCall(personName);
   };
+
+  const navigateFriends = () => {
+    navigate("/friends")
+  }
 
   return (
     <div id="outer-box">
@@ -110,7 +116,8 @@ export default function FriendsDropdown() {
         </FormControl>
       </div>
       <div id="second-box">
-        <Button id="add-button" onClick={handleSubmit}>add</Button>
+        <Button id="oncall-button" onClick={handleSubmit}>add</Button>
+        <Button id="oncall-button" onClick={navigateFriends}>find more friends</Button>
         <p class="title" id="curr-oncall">current oncall friends</p>
         <List>
           <>

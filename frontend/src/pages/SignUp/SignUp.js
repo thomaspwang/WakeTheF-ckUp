@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from '@mui/material/Button';
 import { useAtom } from "jotai";
 import { currUserAtom } from "../../atoms";
+import { useNavigate } from "react-router-dom";
 
 const useFormInput = initialValue => {
   const [value, setValue] = useState(initialValue);
@@ -34,6 +35,8 @@ function SignUp() {
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useAtom(currUserAtom);
 
+    const navigate = useNavigate();
+
 
     const handleSignUp = async () => {
       const response = await fetch("http://localhost:4000/users/newUser/", {
@@ -45,10 +48,10 @@ function SignUp() {
           'Origin' : 'http://localhost:3000'
         },
         body: JSON.stringify({ 
-          "username" : username.value,
-          "password" : password.value,
-          "address" : street.value + state.value + city.value,
-          "phone" : phone.value
+          "username" : username,
+          "password" : password,
+          "address" : street + state + city,
+          "phone" : phone
         })
       });
 
@@ -57,12 +60,9 @@ function SignUp() {
       if (response.status === 400) {
         setError("Account already exists! Try logging in.");
       } else {
-        setUser(username.value);
-        // history('/main');
+        setUser(username);
+        navigate("/alarm")
       }
-  
-      const responseJson = await response.json();
-      console.log(responseJson);
     }
 
     const handlePasswordChange = e => {
@@ -171,6 +171,7 @@ function SignUp() {
             <br />
 
             <Button 
+              onClick={handleSignUp}
               style={{
                 backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none"
             }}

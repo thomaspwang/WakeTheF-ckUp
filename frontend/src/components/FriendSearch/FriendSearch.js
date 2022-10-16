@@ -1,11 +1,16 @@
-import  React, { useState } from "react";
+import  React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Button, Paper } from "@material-ui/core";
 import { currUserAtom } from "../../atoms";
 import { useAtom } from "jotai";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
  
 function FriendSearch() {
-  const searchUrl = "http://localhost:4000/users/addFriends/"
+  const searchUrl = "http://localhost:4000/users/addFriend/"
 
   const [user, setUser] = useAtom(currUserAtom);
   const [inputText, setInputText] = useState("");
@@ -13,10 +18,11 @@ function FriendSearch() {
   const [friends, setFriends] = useState([]);
 
   let inputHandler = (e) => {
-    setInputText(e);
+    setInputText(e.target.value);
   };
 
-  const handleSubmit = async () =>{
+  const handleSubmit = async () => {
+    console.log(inputText)
     const response = await fetch(searchUrl, {
       mode: 'cors',
       method: 'POST',
@@ -30,8 +36,28 @@ function FriendSearch() {
         "friend" : inputText
       })
     });
-    
   };
+
+  const getFriends = async () => {
+    const endpoint = `http://localhost:4000/users/getFriends/?username=${user}`
+    fetch(endpoint, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Origin' : 'http://localhost:3000'
+      }
+    }).then(response =>
+      response.json().then(data => console.log(data['friends'])))
+  }
+
+  useEffect(() => {
+    getFriends();
+    console.log(user)
+    console.log(typeof friends)
+    console.log(friends)
+  }, [])
 
   return (
         <div className="main">
@@ -47,6 +73,15 @@ function FriendSearch() {
             {response && <><small style={{ color: 'red' }}>{response}</small><br /></>}<br />
             <Button onClick={handleSubmit}>Add Friend</Button>
           </div>
+          <p class="title"> current friends</p>
+          {/* <List>
+            <>
+              {
+                friends.map(friend =>
+                  <ListItemText primary={friend}/>)
+              }
+            </>
+          </List> */}
         </div>
     );
 }
