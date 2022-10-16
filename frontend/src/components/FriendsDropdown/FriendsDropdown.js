@@ -89,7 +89,7 @@ export default function FriendsDropdown() {
 
   return (
     <div id="outer-box">
-        <div id="inner-box">
+      <div id="inner-box">
         <img id="beepbeep" src={require("../../assets/beepbeep.png")}></img>
         <div class="title" style={{ marginBottom: "15px" }}>add friends to your alarm!</div>
         <FormControl sx={{ m: 1, width: 300 }}>
@@ -118,7 +118,7 @@ export default function FriendsDropdown() {
       <div id="second-box">
         <div id="button-box">
           <Button
-            style={{ marginTop: "10px", backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px" }}
+            style={{ marginTop: "15px", backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px" }}
             id="oncall-button"
             onClick={handleSubmit}
             variant="contained"
@@ -126,7 +126,7 @@ export default function FriendsDropdown() {
             add
           </Button>
           <Button
-            style={{ marginTop: "10px", backgroundColor: "rgba(255, 242, 134, .7)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none" }}
+            style={{ marginTop: "15px", backgroundColor: "rgba(255, 242, 134, .7)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none" }}
             id="oncall-button"
             onClick={navigateFriends}
           >
