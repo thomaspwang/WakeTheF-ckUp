@@ -34,6 +34,8 @@ function Login() {
                 <input className='inputLogin' type="password" {...password} autoComplete="new-password" />
             </div>
             {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
+            <p className=" dont fucking know">don't have an account? sign up here</p>
+            <input className='btnLogin' type="button" value={loading ? 'Loading...' : 'Login'} disabled={loading} /><br />
         </div>
     )
 }
