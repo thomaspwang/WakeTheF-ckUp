@@ -14,7 +14,8 @@ users.py contains the routes
 ## schema:
 CREATE TABLE public.users (  
   name VARCHAR(255) NULL,  
-  friends INT8[] NULL,  
+  friends STRING[] NULL,  
+  oncall STRING[] NULL,   
   lat FLOAT8 NULL,  
   long FLOAT8 NULL,  
   phone VARCHAR(32) NULL,  

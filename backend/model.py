@@ -6,7 +6,8 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = "users"
     name = Column(String)
-    friends = Column(ARRAY(Integer))
+    friends = Column(ARRAY(String))
+    oncall = Column(ARRAY(String))
     lat = Column(Float)
     long = Column(Float)
     phone = Column(String)
