@@ -26,7 +26,7 @@ def addUser():
     lat, long = geocode(data['address'])
     
     session = Session()
-    newUser = User(name=data['name'], username=data['username'], password=data['password'], \
+    newUser = User(username=data['username'], password=data['password'], \
                    friends=[], oncall=[], lat=lat, long=long, phone=data["phone"])
     session.add(newUser)
     try:

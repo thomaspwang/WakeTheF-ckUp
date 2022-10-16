@@ -19,6 +19,34 @@ function FriendSearch() {
   const [friends, setFriends] = useState([]);
   // const [error, setError] = useState(null);
 
+  const getFriends = async () => {
+    const endpoint = `http://localhost:4000/users/getFriends/?username=${user}`
+    const res = await fetch(endpoint, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Origin' : 'http://localhost:3000'
+      }
+    })
+    const data = await res.json();
+    console.log(data)
+    setFriends(data['friends'])
+    // ).then(response =>
+    //   response.json().then(data => data['friends'])
+    //   .then(data => {
+    //     setFriends(data)
+    //   }))
+  }
+
+  useEffect(() => {
+    getFriends();
+    // console.log(user)
+    // console.log(typeof friends)
+    console.log(friends)
+  }, [])
+
   let inputHandler = (e) => {
     setInputText(e.target.value);
   };
@@ -40,6 +68,7 @@ function FriendSearch() {
     });
 
     console.log(response)
+    getFriends()
   
     // if (response == "true") {
     //   setUser(inputText)
@@ -93,18 +122,17 @@ function FriendSearch() {
             </Button>
           </div>
           <p class="title"> current friends</p>
-          {/* <List>
+          <List>
             <>
               {
                 friends.map(friend =>
                   <ListItemText primary={friend}/>)
               }
             </>
-          </List> */}
-    </div>
-    
-    </div>
-  );
+          </List>
+        </div>
+      </div>
+    );
 }
 
 export default FriendSearch;
