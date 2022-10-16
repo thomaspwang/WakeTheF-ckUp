@@ -1,0 +1,11 @@
+[{
+    "id": 1,
+    "username": "tiff",
+    "password": "password123",
+    "address": {
+        "street": "123 Channing Way",
+        "apt": "3",
+        "city": "Berkeley",
+        "state": "California"
+    }
+}]
