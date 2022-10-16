@@ -91,7 +91,7 @@ export default function FriendsDropdown() {
     <div id="outer-box">
         <div id="inner-box">
         <img id="beepbeep" src={require("../../assets/beepbeep.png")}></img>
-        <p class="title">add friends to your alarm!</p>
+        <div class="title" style={{ marginBottom: "15px" }}>add friends to your alarm!</div>
         <FormControl sx={{ m: 1, width: 300 }}>
           <InputLabel id="demo-multiple-name-label">friends</InputLabel>
           <Select
@@ -116,10 +116,25 @@ export default function FriendsDropdown() {
         </FormControl>
       </div>
       <div id="second-box">
-        <Button id="oncall-button" onClick={handleSubmit}>add</Button>
-        <Button id="oncall-button" onClick={navigateFriends}>find more friends</Button>
-        <p class="title" id="curr-oncall">current oncall friends</p>
-        <List>
+        <div id="button-box">
+          <Button
+            style={{ marginTop: "10px", backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px" }}
+            id="oncall-button"
+            onClick={handleSubmit}
+            variant="contained"
+          >
+            add
+          </Button>
+          <Button
+            style={{ marginTop: "10px", backgroundColor: "rgba(255, 242, 134, .7)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none" }}
+            id="oncall-button"
+            onClick={navigateFriends}
+          >
+            find more friends
+          </Button>
+        </div>
+        <div class="title" id="curr-oncall">current oncall friends</div>
+        <List style={{ textAlignLast: "center" }}>
           <>
             {
               onCall.map(friend =>

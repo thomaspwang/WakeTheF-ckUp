@@ -71,7 +71,13 @@ function FriendSearch() {
               onChange={inputHandler}
             />
             {response && <><small style={{ color: 'red' }}>{response}</small><br /></>}<br />
-            <Button onClick={handleSubmit}>Add Friend</Button>
+            <Button
+              style={{ marginTop: "10px", backgroundColor: "rgba(186,209,250)", fontFamily: "DM SANS", textTransform: "lowercase", color: "black", boxShadow: "none", marginRight: "10px" }}
+              onClick={handleSubmit}
+              variant="contained"
+            >
+              Add Friend
+            </Button>
           </div>
           <p class="title"> current friends</p>
           {/* <List>
